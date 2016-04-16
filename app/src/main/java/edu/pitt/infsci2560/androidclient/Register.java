@@ -57,7 +57,7 @@ public class Register extends Activity {
                 ServerRequest sr = new ServerRequest();
                 //JSONObject json = sr.getJSON("http://10.0.2.2:8080/register",params);
                 //JSONObject json = sr.getJSON("http://192.168.56.1:8080/register",params);
-                JSONObject json = sr.getJSON("https://immense-dawn-31145.herokuapp.com/api/register",params);
+                JSONObject json = sr.getJSON("https://immense-dawn-31145.herokuapp.com/register",params);
 
                 if(json != null){
                     try{
