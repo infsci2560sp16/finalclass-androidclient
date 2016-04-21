@@ -52,7 +52,6 @@ public class Login extends Activity {
             }
         });
 
-
         login.setOnClickListener(new View.OnClickListener() {
 
 
