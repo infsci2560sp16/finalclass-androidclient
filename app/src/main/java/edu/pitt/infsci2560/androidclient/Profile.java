@@ -55,7 +55,7 @@ public class Profile extends Activity {
 
         pref = getSharedPreferences("AppPref", MODE_PRIVATE);
         token = pref.getString("token", "");
-        grav = pref.getString("grav", "");
+        grav = "https:" + pref.getString("grav", ""); // note : probably need a better way to do this
 
         web.getSettings().setUseWideViewPort(true);
         web.getSettings().setLoadWithOverviewMode(true);
@@ -81,9 +81,7 @@ public class Profile extends Activity {
                         params.add(new BasicNameValuePair("newpass", newpasstxt));
                         params.add(new BasicNameValuePair("id", token));
                         ServerRequest sr = new ServerRequest();
-                        //    JSONObject json = sr.getJSON("http://192.168.56.1:8080/api/chgpass",params);
-                        //JSONObject json = sr.getJSON("http://10.0.2.2:8080/api/chgpass",params);
-                        JSONObject json = sr.getJSON("https://immense-dawn-31145.herokuapp.com/api/chgpass", params);
+                        JSONObject json = sr.getJSON(getString(R.string.server_url) + "api/chgpass", params);
                         if (json != null) {
                             try {
                                 String jsonstr = json.getString("response");

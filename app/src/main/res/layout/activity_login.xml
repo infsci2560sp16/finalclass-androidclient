@@ -40,14 +40,13 @@
         android:textColor="#ffffff"
         android:textAlignment="center"
         android:text="Login"/>
+
     <LinearLayout
         android:layout_width="440px"
         android:layout_height="wrap_content"
         android:layout_marginTop="10px"
         android:layout_gravity="center"
         android:orientation="horizontal" >
-
-
 
         <Button
             android:layout_width="215px"
@@ -58,6 +57,7 @@
             android:textColor="#ffffff"
             android:textAlignment="center"
             android:text="Register"/>
+
         <Button
             android:layout_width="215px"
             android:layout_height="80px"

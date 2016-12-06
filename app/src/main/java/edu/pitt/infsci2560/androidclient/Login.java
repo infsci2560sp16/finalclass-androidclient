@@ -33,6 +33,7 @@ public class Login extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         sr = new ServerRequest();
 
         email = (EditText) findViewById(R.id.email);
@@ -59,12 +60,13 @@ public class Login extends Activity {
             public void onClick(View view) {
                 emailtxt = email.getText().toString();
                 passwordtxt = password.getText().toString();
+
                 params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("email", emailtxt));
                 params.add(new BasicNameValuePair("password", passwordtxt));
+
                 ServerRequest sr = new ServerRequest();
-                //JSONObject json = sr.getJSON("http://10.0.2.2:8080/login",params);
-                JSONObject json = sr.getJSON("https://immense-dawn-31145.herokuapp.com/login", params);
+                JSONObject json = sr.getJSON(getString(R.string.server_url) + "login", params);
                 if (json != null) {
                     try {
                         String jsonstr = json.getString("response");
@@ -76,8 +78,8 @@ public class Login extends Activity {
                             edit.putString("token", token);
                             edit.putString("grav", grav);
                             edit.commit();
-                            Intent profactivity = new Intent(Login.this, Profile.class);
 
+                            Intent profactivity = new Intent(Login.this, Profile.class);
                             startActivity(profactivity);
                             finish();
                         }
@@ -117,7 +119,7 @@ public class Login extends Activity {
 
                         //  JSONObject json = sr.getJSON("http://192.168.56.1:8080/api/resetpass", params);
                         //JSONObject json = sr.getJSON("http://10.0.2.2:8080/api/resetpass", params);
-                        JSONObject json = sr.getJSON("https://immense-dawn-31145.herokuapp.com/api/resetpass", params);
+                        JSONObject json = sr.getJSON(getString(R.string.server_url) + "api/resetpass", params);
 
                         if (json != null) {
                             try {
@@ -149,7 +151,7 @@ public class Login extends Activity {
                                             params.add(new BasicNameValuePair("newpass", npass_txt));
 
                                             //JSONObject json = sr.getJSON("http://10.0.2.2:8080/api/resetpass/chg", params);
-                                            JSONObject json = sr.getJSON("https://immense-dawn-31145.herokuapp.com/api/resetpass/chg", params);
+                                            JSONObject json = sr.getJSON(getString(R.string.server_url) + "api/resetpass/chg", params);
                                             //   JSONObject json = sr.getJSON("http://192.168.56.1:8080/api/resetpass/chg", params);
 
                                             if (json != null) {
